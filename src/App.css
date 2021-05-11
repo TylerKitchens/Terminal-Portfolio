@@ -1,38 +1,83 @@
-.App {
-  text-align: center;
+h1{
+  color : green;
+  font-family : ModeSeven;
+  font-weight: bold;
+}
+#cursor{
+  font-size: 1.1em;
+
+  color : green;
+  font-family : ModeSeven;
+}
+#prompt{
+  font-size: 1.1em;
+  color : green;
+  font-family : ModeSeven;
+
+}
+img {
+  border-radius: 100px;
+  border-width: 1px;
+  border-color: green;
+  border-style: solid;
+}
+.text-art{
+  font-size: 1.1em;
+  font-family: monospace;
+  white-space: pre;
+  color : green;
+  font-family : ModeSeven;
+}
+.history{
+  font-size: 1.1em;
+
+  color : green;
+  font-family : ModeSeven;
+}
+#command {
+  font-size: 1.1em;
+ 
+  color : green;
+  font-family : ModeSeven;
+
+  background-color: black;
+  border-color: black;
+ 
+  outline: none;
+  font-weight: bold;
+}
+#area {
+  font-size: 1.1em;
+ 
+  color : green;
+  font-family : ModeSeven;
+
+  background-color: black;
+  border-color: black;
+ 
+  outline: none;
+  font-weight: bold;
+  margin-top: 0px;
+  padding-top: 0;
+  padding-left: 0;
+  line-height: 1em;
+}
+#command:focus{
+  border: none;
+}
+p{
+  color : green;
+  font-family : ModeSeven;
+  font-size: 1.1em;
+  margin-bottom: 0px !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: 'Zig';
+  src: local('Zig'), url(./assets/fonts/zig.ttf) format('truetype');
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@font-face {
+  font-family: 'ModeSeven';
+  src: local('Modeseven'), url(./assets/fonts/modeseven.ttf) format('truetype');
 }

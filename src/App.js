@@ -1,9 +1,10 @@
 import './App.css';
 import React from 'react';
-import $ from 'jquery'
+
 import me from './assets/img/me2.png'
 import realMe from './assets/img/real-me.png'
 
+import Projects from './Projects'
 class App extends React.Component {
 
   constructor(props) {
@@ -13,12 +14,13 @@ class App extends React.Component {
       history: '',
       showImage: false,
       eightbit: false,
-      showDownload : false,
-      isContact : false,
-      email : '',
-      msg : '',
-      cIndex : 0,
-      prompt : "$"
+      showDownload: false,
+      isContact: false,
+      email: '',
+      msg: '',
+      cIndex: 0,
+      prompt: "$",
+      showProjects: false
 
     }
 
@@ -31,54 +33,89 @@ class App extends React.Component {
     this.cursor.current.focus();
   }
   runCommand = (cmd) => {
-    if(this.state.isContact){
-      if(this.state.cIndex == 0){
+    if (this.state.isContact) {
+      if (this.state.cIndex == 0) {
         //Todo check Email
-        this.setState({history : this.state.history + "\n$ Email: " + cmd, email : cmd, prompt : '$ Msg: ', command : '', cIndex : 1}, () => {
-          this.area.current.focus()
-        })
+        if (this.validEmail(cmd)) {
+          this.setState({ history: this.state.history + "\n$ Email: " + cmd, email: cmd, prompt: '$ Msg: ', command: '', cIndex: 1 }, () => {
+            this.area.current.focus()
+          })
+        } else {
+          this.setState({ history: this.state.history + "\n .Please enter a valid email", command: '' })
+        }
+
       }
-    }else{
+    } else {
 
-    
-    this.setState({ history: this.state.history + "\n$ " + this.state.command + '\u000A' }, () => {
 
-      switch (cmd.toLowerCase().split(" ")[0]) {
-        case "help":
-          this.runHelp()
-          break;
-        case "clear":
-          this.setState({ history: "" })
-          break;
-        case "ls":
-          this.runLS()
-          break;
-        case "cat":
-          this.runCat(cmd)
-          break;
-        case "contact":
-          this.runContact()
-          break;
-      }
+      this.setState({ history: this.state.history + "\n$ " + this.state.command + '\u000A' }, () => {
 
-      this.setState({ command: '' })
+        switch (cmd.toLowerCase().split(" ")[0]) {
+          case "help":
+            this.runHelp()
+            break;
+          case "clear":
+            this.setState({ history: "", showProjects: false })
+            break;
+          case "ls":
+            this.runLS()
+            break;
+          case "cat":
+            this.runCat(cmd)
+            break;
+          case "contact":
+            this.runContact()
+            break;
+          case "github":
+            this.runView()
+            break;
+          case "nmi":
+            this.runNMI()
+            break;
+        }
 
-      this.bottom.current.scrollIntoView({ behavior: 'smooth' })
-    })
+        this.setState({ command: '' })
+
+        this.bottom.current.scrollIntoView({ behavior: 'smooth' })
+      })
+    }
+
   }
 
+  runNMI = () => {
+    const link = document.createElement('a');
+    link.setAttribute("target", "__blank")
+    link.href = `https://tkitchappdesign.com/nmc/`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  validEmail = email => {
+    const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return res.test(String(email).toLowerCase());
+
+  }
+
+  runView = () => {
+    const link = document.createElement('a');
+    link.setAttribute("target", "__blank")
+    link.href = `https://github.com/TylerKitchens/Terminal-Portfolio/tree/master`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 
   runContact = () => {
-    
-      this.setState({history : "$ contact", prompt : '$ Email: ', isContact : true}, () => {
-      
-      })
-    
-    
+
+    this.setState({ history: "$ contact", prompt: '$ Email: ', isContact: true }, () => {
+
+    })
+
+
   }
   runHelp = () => {
-    const helpTxt = "available commands...\n   .cat\n +--display contents of a file\n +-- \"cat About.txt\" displays contents of About.txt\n     .ls\n +-- show all available files for cat\n     .help\n +-- show all commands\n     .clear\n +-- clear previous terminal input\n .contact\n +--sends me an email"
+    const helpTxt = "available commands...\n   .cat\n +--display contents of a file\n +-- \"cat About.txt\" displays contents of About.txt\n     .ls\n +-- show all available files for cat\n     .help\n +-- show all commands\n     .clear\n +-- clear previous terminal input\n .contact\n +--sends me an email\n .github\n +--view source code of this website\n .nmi\n +-- show my New Media Portfolio"
     this.setState({ history: "$ help\n" + helpTxt, showImage: false })
   }
 
@@ -90,7 +127,7 @@ class App extends React.Component {
 
 
   runCat = (cmd) => {
-   
+
     const words = cmd.trim().split(' ')
     if (words.length !== 2) {
       this.setState({
@@ -120,6 +157,11 @@ class App extends React.Component {
           link.click();
           document.body.removeChild(link);
           break;
+        case "projects.txt":
+          this.setState({ showProjects: true }, () => {
+            this.bottom.current.scrollIntoView({ behavior: 'smooth' })
+
+          })
       }
     }
 
@@ -131,9 +173,50 @@ class App extends React.Component {
   checkForEnter = e => {
 
     if (e.keyCode === 13) {
-      this.runCommand(this.state.command)
+      if (this.state.isContact && this.state.cIndex == 1) {
+
+        this.contactSubmit()
+      } else {
+        this.runCommand(this.state.command)
+      }
+
     }
 
+  }
+
+  contactSubmit = async () => {
+    console.log("From: " + this.state.email)
+    console.log("Msg: " + this.state.msg)
+    this.setState({ history: "$ contact\n .Message Sent Successfully", msg: '', email: '', prompt: "$", isContact: false, cIndex: 0 }, async () => {
+      this.cursor.current.focus();
+      try {
+        let response = await fetch(
+          'http://tkitchappdesign.com/contactForm.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            msg: this.state.msg,
+            email: this.state.email
+          })
+        }
+        );
+        let code = response.status;
+        if (code == 200) {
+          console.log('success')
+        } else {
+          console.log('err')
+        }
+
+      } catch (error) {
+        // err()
+        console.error(error);
+        return false
+      }
+
+    })
   }
 
 
@@ -146,11 +229,11 @@ class App extends React.Component {
           <h1 className='text-center'>I'm Tyler Kitchens And Welcome To My Interactive Portfolio</h1>
 
           <p className="text-center mt-3 text-white">Type "help" for a list of commands</p>
-
+          {this.state.showProjects && <Projects />}
           {this.state.showImage && <div class="row">
             <div class="col-4"></div>
             <div class="col-4">
-              <img src={this.state.eightbit ? me : realMe} height="200" width="200" className="img-fluid mx-auto d-block " />
+              <img src={this.state.eightbit ? me : realMe} height="200" width="200" className="img-fluid mx-auto d-block circle" />
             </div>
           </div>}
 
@@ -158,7 +241,7 @@ class App extends React.Component {
           <div className="row justify-content-center align-self-stretch">
 
             <div className='w-50'>
-            
+
               {this.state.history != '' && this.state.history.split('\n').map(i => {
                 console.log("First: " + i.trim().charAt(0))
                 if (i.trim().charAt(0) === '$') {
@@ -184,8 +267,8 @@ class App extends React.Component {
               <div className='row justify-content-start '>
                 <div className="col-md-2 align-items-end justify-contend-end "><p id="prompt" className="mt-1 text-start" >{this.state.prompt}</p></div>
                 <div className="col-md-10 ">
-                  {this.state.cIndex != 1 &&<input onKeyDown={e => this.checkForEnter(e)} ref={this.cursor} type='text' name="command" id="command" className="w-100" value={this.state.command} onChange={e => this.setState({ command: e.target.value })} />}
-                  {this.state.cIndex == 1 && <textarea rows='4' cols='53' ref={this.area} id ='area' className="w-100" value={this.state.msg} onChange={e => this.setState({ msg: e.target.value })} ></textarea>}
+                  {this.state.cIndex != 1 && <input onKeyDown={e => this.checkForEnter(e)} ref={this.cursor} type='text' name="command" id="command" className="w-100" value={this.state.command} onChange={e => this.setState({ command: e.target.value })} />}
+                  {this.state.cIndex == 1 && <textarea onKeyDown={e => this.checkForEnter(e)} rows='4' cols='53' maxlength="180" ref={this.area} id='area' className="w-100" value={this.state.msg} onChange={e => this.setState({ msg: e.target.value })} ></textarea>}
                 </div>
               </div>
             </div>

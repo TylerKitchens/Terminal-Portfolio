@@ -1,7 +1,8 @@
-h1{
+h1, h2{
   color : green;
   font-family : ModeSeven;
   font-weight: bold;
+
 }
 #cursor{
   font-size: 1.1em;
@@ -15,11 +16,17 @@ h1{
   font-family : ModeSeven;
 
 }
-img {
+.circle {
   border-radius: 100px;
   border-width: 1px;
   border-color: green;
   border-style: solid;
+}
+a{
+  color : #568F56 !important;
+}
+.portfolioImg {
+  border-radius: 10px;
 }
 .text-art{
   font-size: 1.1em;

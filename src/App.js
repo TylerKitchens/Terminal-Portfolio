@@ -55,7 +55,7 @@ class App extends React.Component {
             this.runHelp()
             break;
           case "clear":
-            this.setState({ history: "", showProjects: false })
+            this.setState({ history: "", showProjects: false, showImage : false })
             break;
           case "ls":
             this.runLS()
@@ -121,7 +121,7 @@ class App extends React.Component {
 
   runLS = () => {
 
-    const lsTxt = "about.txt \n projects.txt \n contact.txt \n 8bit-me.png \n real-me.png \nresume.pdf"
+    const lsTxt = "about.txt \n projects.txt \n 8bit-me.png \n real-me.png \nresume.pdf"
     this.setState({ history: "$ ls\n" + lsTxt, showImage: false })
   }
 
@@ -189,18 +189,15 @@ class App extends React.Component {
     console.log("Msg: " + this.state.msg)
     this.setState({ history: "$ contact\n .Message Sent Successfully", msg: '', email: '', prompt: "$", isContact: false, cIndex: 0 }, async () => {
       this.cursor.current.focus();
+      var formData = new FormData()
+      formData.append('msg', this.state.msg)
+      formData.append('email', this.state.email)
       try {
         let response = await fetch(
-          'http://tkitchappdesign.com/contactForm.php', {
+          'https://tkitchappdesign.com/contactForm.php', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            msg: this.state.msg,
-            email: this.state.email
-          })
+         
+          body: formData
         }
         );
         let code = response.status;

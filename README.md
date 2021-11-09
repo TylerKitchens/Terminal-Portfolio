@@ -17,7 +17,7 @@ $ cat about.txt
 
 ```
 
-Shows "short" bio about myself.
+- Shows "short" bio about myself.
 
 ```
 
@@ -25,7 +25,7 @@ $ cat projects.txt
 
 ```
 
-Displays list of past projects I was proud enough to show. Includes links projects if applicable.
+- Displays list of past projects I was proud enough to show. Includes links projects if applicable.
 
 ```
 
@@ -33,7 +33,7 @@ $ cat resume.pdf
 
 ```
 
-Links to a traditional resume with contact information.
+- Links to a traditional resume with contact information.
 
 ```
 
@@ -41,7 +41,7 @@ $ cat 8bit-me.png
 
 ```
 
-Keeping with the old shool look, a retro head shot of myself. 
+- Keeping with the old shool look, a retro head shot of myself. 
 
 ```
 
@@ -49,7 +49,7 @@ $ cat real-me.png
 
 ```
 
-You guessed it, a real image of myself.
+- You guessed it, a real image of myself.
 
 ```
 
@@ -57,7 +57,7 @@ contact
 
 ```
 
-Do not use this feature, it has been removed due to spam on my end point. If you wish to contact me, do it through the information listed on my Resume.
+- Do not use this feature, it has been removed due to spam on my end point. If you wish to contact me, do it through the information listed on my Resume.
 
 ```
 
@@ -65,7 +65,7 @@ github
 
 ```
 
-I am not going to explain that one since you made it here and are reading this on Github.
+- I am not going to explain that one since you made it here and are reading this on Github.
 
 
 ```
@@ -74,7 +74,7 @@ clear
 
 ```
 
-Does exactly what you think it does, clears screen from previous commands to give you a clean slate.
+- Does exactly what you think it does, clears screen from previous commands to give you a clean slate.
 
 ```
 
@@ -82,7 +82,7 @@ nmi
 
 ```
 
-Links you to a portfolio of basic web development coursework.
+- Links you to a portfolio of basic web development coursework.
 
 
 

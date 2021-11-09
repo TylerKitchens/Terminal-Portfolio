@@ -55,7 +55,7 @@ class App extends React.Component {
             this.runHelp()
             break;
           case "clear":
-            this.setState({ history: "", showProjects: false, showImage : false })
+            this.setState({ history: "", showProjects: false, showImage: false })
             break;
           case "ls":
             this.runLS()
@@ -137,10 +137,10 @@ class App extends React.Component {
       switch (words[1].toLowerCase()) {
         case "about.txt":
           this.setState({
-            history: "$ " + cmd + "\nHello! My Name is Tyler Kitchens. I graduated from the University of Georgia in 2021 with a bachelor’s degree in computer science. Alongside this, I also completed the New Media Certificate. My first lines of code were written on a shared, family computer to set up a Minecraft Server for my buddies and I can remember thinking the FBI was going to knock on my door after opening the terminal! I have hundreds of hours of programming experience since than and continue to further my education. \n" +
-              "I was contracted for the first time to develop a mobile app in 2018. I had little to none mobile development experience when I was hired and had to learn on the job. This was my first time getting paid to write lines of code and have since been addicted to it. I was programming as a hobby up until then. I know have 4 published mobile apps on Google’s Play Store, and Apple’s App Store. \n " +
-              "I mostly develop mobile apps but have fell in love with developing web apps as well. Fun fact: I strangely am the only person in the world who chooses JavaScript as their favorite language! The website you are reading this text on right now was developed with JS and React! I write the backends to my apps in Node.js as well but have since been writing the calls in AWS lambdas to save money! If you want to read more about my technical skills, open my resume! \n" +
-              "When I am not at my desk, I enjoy fishing, kayaking, and trail riding my Jeep. I like to think of myself as a rare breed that likes the technology side of the world and the beauty of the outdoors! "
+            history: "$ " + cmd + "\nHello! My Name is Tyler Kitchens. I graduated from the University of Georgia in 2021 with a bachelor’s degree in computer science. Alongside this, I also completed the New Media Certificate. My first lines of code were written on a shared, family computer to set up a Minecraft Server for my buddies. I remember thinking the FBI was going to knock on my door after opening the terminal! Since then, I have hundreds of hours of programming experience and continue to further my education. \n" +
+              "I was contracted for the first time to develop a mobile app in 2017. I had little to no mobile development experience when I was hired and had to learn on the job. This was my first time getting paid to write lines of code and have since been addicted to it. I was programming as a hobby up until then. I now have published 4 mobile apps on Google’s Play Store, and Apple’s App Store. \n " +
+              "I mostly develop mobile apps but have fell in love with developing web apps as well. Fun fact: I strangely am the only person in the world who chooses JavaScript as their favorite language! The website you are reading this text on right now was developed with JS and React! I write the backends to my apps in Node.js with a Mongo backend! If you want to read more about my technical skills, open my resume! \n" +
+              "When I am not at my desk, I enjoy fishing, kayaking, and playing guitar. I like to think of myself as a rare breed that likes the technology side of the world and the beauty of the outdoors! " + "\n" + "After giving tips to a lot of my friends on how to pick up gigs on UpWork, I decided to write an e-book titled \"Pick UpWork: A Guide to Landing Freelance Jobs Online\". It was not a great success but a fun experience nonetheless! "
           })
           break;
         case "8bit-me.png":
@@ -196,7 +196,7 @@ class App extends React.Component {
         let response = await fetch(
           'https://tkitchappdesign.com/contactForm.php', {
           method: 'POST',
-         
+
           body: formData
         }
         );
@@ -225,7 +225,7 @@ class App extends React.Component {
         <div className='container p-2'>
           <h1 className='text-center'>I'm Tyler Kitchens And Welcome To My Interactive Portfolio</h1>
 
-          <p className="text-center mt-3 text-white">Type "help" for a list of commands</p>
+          <p className="text-center mt-3 text-white mb-2">Type "help" for a list of commands. <a href="https://github.com/TylerKitchens/Terminal-Portfolio/tree/master" taget="_blank">(cheatsheet)</a></p>
           {this.state.showProjects && <Projects />}
           {this.state.showImage && <div class="row">
             <div class="col-4"></div>
@@ -237,7 +237,7 @@ class App extends React.Component {
 
           <div className="row justify-content-center align-self-stretch">
 
-            <div className='w-50'>
+            <div className='col-md-6'>
 
               {this.state.history != '' && this.state.history.split('\n').map(i => {
                 console.log("First: " + i.trim().charAt(0))
@@ -261,12 +261,18 @@ class App extends React.Component {
 
               })}
 
-              <div className='row justify-content-start '>
-                <div className="col-md-2 align-items-end justify-contend-end "><p id="prompt" className="mt-1 text-start" >{this.state.prompt}</p></div>
-                <div className="col-md-10 ">
-                  {this.state.cIndex != 1 && <input onKeyDown={e => this.checkForEnter(e)} ref={this.cursor} type='text' name="command" id="command" className="w-100" value={this.state.command} onChange={e => this.setState({ command: e.target.value })} />}
-                  {this.state.cIndex == 1 && <textarea onKeyDown={e => this.checkForEnter(e)} rows='4' cols='53' maxlength="180" ref={this.area} id='area' className="w-100" value={this.state.msg} onChange={e => this.setState({ msg: e.target.value })} ></textarea>}
+         
+              <div className='row justify-content-start'>
+                <div className="col-1">
+                  <span id="prompt" className="mt-1 text-start align-middle" >{this.state.prompt}</span>
+
                 </div>
+                <div className="col-11">
+                  {this.state.cIndex != 1 && <input onKeyDown={e => this.checkForEnter(e)} ref={this.cursor} type='text' name="command" className="align-middle" id="command" value={this.state.command} onChange={e => this.setState({ command: e.target.value })} />}
+                  {this.state.cIndex == 1 && <textarea onKeyDown={e => this.checkForEnter(e)} rows='4' cols='53' maxlength="180" ref={this.area} id='area' value={this.state.msg} onChange={e => this.setState({ msg: e.target.value })} ></textarea>}
+
+                </div>
+
               </div>
             </div>
           </div>

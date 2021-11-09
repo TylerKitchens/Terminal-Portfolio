@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# Old School Terminal Portfolio
+![screen-gif](https://tkitchappdesign.com/screen.gif)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Link to demo](https://tkitchappdesign.com)
 
-## Available Scripts
+This project showcases my unique approach to a portfolio. I was tired of seeing countless word press installs and pre-made bootstrap portfolio templates. I wanted something that was both unique, and fun to make.
 
-In the project directory, you can run:
+This project was build using React. I did not spend a lot of time architecture it or using industry best practices due to a project deadline for college. Nonetheless, it was something fun to build and I hope you get a kick out of it.
 
-### `yarn start`
+Feel free to download the source code and make it your own. You do not need to give me credit, all I ask is you submit a PR with some cool new feature in return! Happy Hacking!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Cheat Sheet
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
 
-### `yarn test`
+$ cat about.txt
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
 
-### `yarn build`
+Shows "short" bio about myself.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+$ cat projects.txt
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `yarn eject`
+Displays list of past projects I was proud enough to show. Includes links projects if applicable.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+$ cat resume.pdf
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Links to a traditional resume with contact information.
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+$ cat 8bit-me.png
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
 
-### Code Splitting
+Keeping with the old shool look, a retro head shot of myself. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
 
-### Analyzing the Bundle Size
+$ cat real-me.png
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
 
-### Making a Progressive Web App
+You guessed it, a real image of myself.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
 
-### Advanced Configuration
+contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
 
-### Deployment
+Do not use this feature, it has been removed due to spam on my end point. If you wish to contact me, do it through the information listed on my Resume.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
 
-### `yarn build` fails to minify
+github
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+
+I am not going to explain that one since you made it here and are reading this on Github.
+
+
+```
+
+clear
+
+```
+
+Does exactly what you think it does, clears screen from previous commands to give you a clean slate.
+
+```
+
+nmi
+
+```
+
+Links you to a portfolio of basic web development coursework.
+
+
+
+
